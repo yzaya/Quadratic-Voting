@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <label for="issue1">Issue 1:</label><br>
+      <textarea id="issue1" name="issue1"></textarea><br><br>
+
+      <button type="button" id="add-choice-btn">+</button>
+      <button type="button" id="remove-choice-btn">-</button><br><br>
+
+
+      <label for="choice1">Choice 1:</label>
+      <input type="text" id="choice1" name="choice1"><br>
+
+      <div id="choices-container">
+        <label for="choice2">Choice 2:</label>
+        <input type="text" id="choice2" name="choice2"><br>
+      </div>
+      
+
+      
+
+
+    <script>
+      const addChoiceBtn = document.getElementById('add-choice-btn');
+      const removeChoiceBtn = document.getElementById('remove-choice-btn');
+      const choicesContainer = document.getElementById('choices-container');
+
+      let choiceCount = 2;
+
+      addChoiceBtn.addEventListener('click', function() {
+        if (choiceCount<9){
+        const newChoiceLabel = document.createElement('label');
+        newChoiceLabel.textContent = `Choice ${choiceCount+1}: `;
+        newChoiceLabel.setAttribute('for', `choice${choiceCount+1}`)
+        newChoiceLabel.setAttribute('id',`choiceLabel${choiceCount+1}`);
+
+        const newChoiceInput = document.createElement('input');
+        newChoiceInput.setAttribute('type', 'text');
+        newChoiceInput.setAttribute('id', `choice${choiceCount+1}`);
+        newChoiceInput.setAttribute('name', `choice${choiceCount+1}`);
+
+        choicesContainer.appendChild(newChoiceLabel);
+        choicesContainer.appendChild(newChoiceInput);
+        choicesContainer.appendChild(document.createElement('br'));
+
+        choiceCount++;
+      }});
+
+      removeChoiceBtn.addEventListener('click', function() {
+        if (choiceCount>2){
+        
+        const removeIn = choicesContainer.lastChild;
+        removeIn.remove();
+        const removeLa = choicesContainer.lastChild;
+        removeLa.remove();
+        const removeBr = choicesContainer.lastChild;
+        removeBr.remove();
+
+        choiceCount--;}
+      });
+    
+    </script>
+</body>
+</html>
